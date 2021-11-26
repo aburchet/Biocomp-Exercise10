@@ -7,9 +7,9 @@ library(ggplot2)
 library(cowplot)
 
 # Part 1:
-# Scatter plot of 2 variables with a trendline
+# Scatter plot of 2 variables with a trend line
 
-muscleData<-read.table("MuscleData.txt", header=T) #Prolly need to upload this too
+muscleData<-read.table("MuscleData.txt", header=T)
 
 ggplot(muscleData, aes(x=MeanIntensity, y=MassDisplacement)) +
   geom_point() +
@@ -19,20 +19,18 @@ ggplot(muscleData, aes(x=MeanIntensity, y=MassDisplacement)) +
   theme_classic()
 
 # Part 2
-# Make 2 figures from data.txt, barplot and scatter plot, use geom_jitter() to make easier to see
-# do bar and scatter plots say different thing?
-
 
 data<-read.table("data.txt", header=T, sep=",")
 
-# barplot of means of 4 populations (N,e,s,w)
-
+# barplot of means of 4 populations (n,e,s,w)
 bar<-ggplot(data, aes(x=region, y=observations)) +
         stat_summary(fun="mean", geom="bar")
         xlab("Region") +
         ylab("Observations") +
         theme_classic()
 
+        
+# Scatter plot for each region
 scatter<-ggplot(data, aes(x=region, y=observations)) +
   geom_point() +
   geom_jitter() +
